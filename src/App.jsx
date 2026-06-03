@@ -116,7 +116,7 @@ function buildWhatsApp(round) {
   const mapsLink = round.lat ? `\n📍 Cómo llegar: https://www.google.com/maps?q=${round.lat},${round.lng}` : "";
   const shareUrl = `${window.location.href.split("?")[0]}?salida=${round.id}`;
   return encodeURIComponent(
-    `*⛳ SALIDA MBQB*\n` +
+    `*SALIDA MBQB*\n` +
     `*Campo:* ${round.course}\n` +
     `*Fecha:* ${formatDate(round.date)}\n` +
     `*Hora:* ${round.time} hrs\n` +
