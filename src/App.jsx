@@ -116,15 +116,15 @@ function buildWhatsApp(round) {
   const mapsLink = round.lat ? `\n📍 Cómo llegar: https://www.google.com/maps?q=${round.lat},${round.lng}` : "";
   const shareUrl = `${window.location.href.split("?")[0]}?salida=${round.id}`;
   return encodeURIComponent(
-    `⛳ *SALIDA MBQB*\n` +
-    `🏌 Campo: ${round.course}\n` +
-    `📅 ${formatDate(round.date)}\n` +
-    `⏰ ${round.time} hrs\n` +
-    `👥 ${filled}/${round.maxPlayers} jugadores${spots > 0 ? ` — ¡quedan ${spots} cupos!` : " — COMPLETO"}\n` +
+    `*⛳ SALIDA MBQB*\n` +
+    `*Campo:* ${round.course}\n` +
+    `*Fecha:* ${formatDate(round.date)}\n` +
+    `*Hora:* ${round.time} hrs\n` +
+    `*Jugadores:* ${filled}/${round.maxPlayers}${spots > 0 ? ` — ¡quedan ${spots} cupos!` : " — COMPLETO"}\n` +
     (names ? `\n*Inscritos:*\n${names}\n` : "") +
-    (round.notes ? `\n📝 ${round.notes}\n` : "") +
-    mapsLink +
-    `\n🔗 Anótate: ${shareUrl}`
+    (round.notes ? `\n*Notas:* ${round.notes}\n` : "") +
+    (round.lat ? `\n*Cómo llegar:* https://www.google.com/maps?q=${round.lat},${round.lng}` : "") +
+    `\n*Anótate:* ${shareUrl}`
   );
 }
 
