@@ -131,16 +131,44 @@ function buildWhatsApp(round) {
 const BLANK = { name: "", rut: "", phone: "", email: "", handicap: "18", transport: "none" };
 
 // ── LOGO SVG ──────────────────────────────────────────────────────────────────
-function MBQBLogo({ size = 48 }) {
+function MBQBLogo({ size = 48, color }) {
+  const c = color || "#0f3b2e";
+  const showSub = size >= 56;
+  const vbH = showSub ? 220 : 175;
+  const w = Math.round(size * (460 / vbH));
   return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="60" cy="60" r="58" fill="#0f3b2e" stroke="#ac9572" strokeWidth="2"/>
-      <text x="60" y="52" textAnchor="middle" fontFamily="'Playfair Display', serif" fontSize="28" fontWeight="700" fill="#f5f1eb" letterSpacing="2">MBQB</text>
-      <circle cx="60" cy="70" r="10" fill="none" stroke="#ac9572" strokeWidth="1.5"/>
-      <circle cx="57" cy="67" r="1.5" fill="#ac9572"/>
-      <circle cx="63" cy="67" r="1.5" fill="#ac9572"/>
-      <circle cx="60" cy="73" r="1.5" fill="#ac9572"/>
-      <text x="60" y="97" textAnchor="middle" fontFamily="'Source Serif 4', serif" fontSize="7" fill="#ac9572" letterSpacing="3">MÁS BOGEYS QUE BIRDIES</text>
+    <svg width={w} height={size} viewBox={`0 0 460 ${vbH}`} fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* MB */}
+      <text x="4" y="162" fontFamily="'Playfair Display', Georgia, serif" fontSize="155" fontWeight="700" fill={c}>MB</text>
+      {/* Golf ball circle (replaces the O in MBQB) */}
+      <circle cx="285" cy="78" r="63" fill="none" stroke={c} strokeWidth="5"/>
+      {/* Golf club diagonal line (the Q tail) */}
+      <line x1="228" y1="166" x2="332" y2="10" stroke={c} strokeWidth="5" strokeLinecap="round"/>
+      {/* Dimples */}
+      <circle cx="270" cy="30" r="4.5" fill={c}/>
+      <circle cx="296" cy="24" r="4.5" fill={c}/>
+      <circle cx="320" cy="33" r="4.5" fill={c}/>
+      <circle cx="249" cy="48" r="4.5" fill={c}/>
+      <circle cx="276" cy="43" r="4.5" fill={c}/>
+      <circle cx="301" cy="48" r="4.5" fill={c}/>
+      <circle cx="326" cy="55" r="4.5" fill={c}/>
+      <circle cx="258" cy="66" r="4" fill={c}/>
+      <circle cx="284" cy="60" r="4" fill={c}/>
+      <circle cx="312" cy="66" r="4" fill={c}/>
+      <circle cx="335" cy="74" r="4" fill={c}/>
+      <circle cx="268" cy="83" r="4" fill={c}/>
+      <circle cx="296" cy="79" r="4" fill={c}/>
+      <circle cx="322" cy="87" r="4" fill={c}/>
+      <circle cx="282" cy="98" r="3.5" fill={c}/>
+      <circle cx="308" cy="101" r="3.5" fill={c}/>
+      {/* B */}
+      <text x="342" y="162" fontFamily="'Playfair Display', Georgia, serif" fontSize="155" fontWeight="700" fill={c}>B</text>
+      {/* Subtitle */}
+      {showSub && <>
+        <line x1="4" y1="188" x2="62" y2="188" stroke={c} strokeWidth="1.5"/>
+        <text x="232" y="196" textAnchor="middle" fontFamily="'Playfair Display', Georgia, serif" fontSize="13" letterSpacing="3.5" fill={c}>MÁS BOGEYS QUE BIRDIES</text>
+        <line x1="402" y1="188" x2="460" y2="188" stroke={c} strokeWidth="1.5"/>
+      </>}
     </svg>
   );
 }
@@ -586,7 +614,7 @@ export default function App() {
         <style>{css}</style>
         <div style={S.header}>
           <div style={S.headerInner}>
-            <div style={S.logoWrap}><MBQBLogo size={36} /><div><div style={S.logoText}>MBQB</div><div style={S.logoSub}>Más Bogeys Que Birdies</div></div></div>
+            <div style={S.logoWrap}><MBQBLogo size={44} color={C.cream} /></div>
             <button className="btn-ghost" style={{ ...S.btn, color: C.gold, borderColor: "rgba(172,149,114,0.4)", fontSize: 12 }} onClick={() => setView("home")}>← Ver salidas</button>
           </div>
         </div>
@@ -644,8 +672,7 @@ export default function App() {
       <div style={S.header}>
         <div style={S.headerInner}>
           <div style={S.logoWrap}>
-            <MBQBLogo size={40} />
-            <div><div style={S.logoText}>MBQB</div><div style={S.logoSub}>Más Bogeys Que Birdies</div></div>
+            <MBQBLogo size={44} color={C.cream} />
           </div>
           <button className="btn-gold" style={{ ...S.btn, fontSize: 13, padding: "9px 18px" }} onClick={() => { setRoundError(""); setRoundSuccess(false); setView("new"); }}>+ Nueva salida</button>
         </div>
