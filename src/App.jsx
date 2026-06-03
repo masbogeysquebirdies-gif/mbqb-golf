@@ -117,7 +117,7 @@ function buildWhatsApp(round) {
   const shareUrl = `${window.location.href.split("?")[0]}?salida=${round.id}`;
   return encodeURIComponent(
     `⛳ *SALIDA MBQB*\n` +
-    `🏌️ Campo: ${round.course}\n` +
+    `🏌 Campo: ${round.course}\n` +
     `📅 ${formatDate(round.date)}\n` +
     `⏰ ${round.time} hrs\n` +
     `👥 ${filled}/${round.maxPlayers} jugadores${spots > 0 ? ` — ¡quedan ${spots} cupos!` : " — COMPLETO"}\n` +
